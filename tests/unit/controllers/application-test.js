@@ -18,5 +18,5 @@ test("Controller makes a call when it has received 11 digits", function(assert) 
   controller.set('currentNumber', '1555867530');
 
   controller.send('receiveButtonPress', '9');
-  assert.ok(controller.dialNumber.calledOnce);
+  assert.ok(controller.dialNumber.calledOnce, "Controller calls dialNumber() when an 11-digit number has been received");
 });
