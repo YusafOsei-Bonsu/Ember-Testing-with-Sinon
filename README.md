@@ -1,7 +1,6 @@
-# app-with-sinon
+# ember-app-with-sinon
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This small project concentrates on testing Ember applications using sinon. In addition, the purpose of this project was to increase my understanding of sinon testing. 
 
 ## Prerequisites
 
