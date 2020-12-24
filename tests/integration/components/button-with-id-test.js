@@ -1,8 +1,9 @@
+import sinon from 'sinon';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('button-with-id', 'Integration | Component | button with id', {
-  integration: true
+  integration: false
 });
 
 test('it renders', function(assert) {
@@ -11,14 +12,18 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{button-with-id}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$().text().trim(), '', "button-with-id can render");
+});
 
-  // Template block usage:
-  this.render(hbs`
-    {{#button-with-id}}
-      template block text
-    {{/button-with-id}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+test("it sends its id when the button is pressed", function(assert) {
+  let component = this.subject();
+  let buttonId = '7';
+  component.set('id', buttonId);
+ 
+  component.sendAction = sinon.spy();
+ 
+  component.send('buttonPressed');
+ 
+  assert.ok(component.sendAction.calledOnce, "sendAction was called once");
+  assert.ok(component.sendAction.calledWith('sendId', buttonId), "sendAction was called with 'sendId' & the button's ID");
 });
