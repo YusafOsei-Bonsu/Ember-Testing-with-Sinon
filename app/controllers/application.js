@@ -22,7 +22,9 @@ export default Controller.extend({
             this.set('currentNumber', this.get('currentNumber') + buttonId);
 
             // If the number is valid, dial the number
-            if (this.get('currentNumber').length === 10) this.dialNumber();
+            if (this.get('currentNumber').length === 11) {
+                this.dialNumber();
+            }
         }
     }
 });
